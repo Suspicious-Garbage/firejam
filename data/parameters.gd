@@ -18,8 +18,11 @@ var MOVEMENT_DIRECTION_INERTIA: float = 5
 
 # Dash
 # Los tiempos estan en segundos
-var CHARGING_TIME:float = 2 
+var CHARGING_TIME:float = 0.5
 var DASH_DURATION:float = 1
+
+# 0 velocidad normal, 1 1no te podes mover
+var CHARGE_SLOWDOWN = 0.4
 
 var DASH_SPEED = 800
 
