@@ -1,7 +1,7 @@
 extends CharacterBody2D
 var _direction: Vector2 = Vector2(0,0)
 
-signal request_tracking
+signal request_tracking(momentum)
 @export var animation: Node
 @onready var _charge_timer = $ChargeTimer
 @onready var _dash_timer = $DashTimer
@@ -33,7 +33,7 @@ func _normal_movement(delta):
 	_momentum = clamp(_momentum, 0, Param.MAX_MOMENTUM)
 	
 	if _momentum > Param.TRACKING_MOMENTUM:
-		request_tracking.emit()
+		request_tracking.emit(_momentum)
 	
 	
 	var _penalty = 1
