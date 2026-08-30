@@ -1,0 +1,12 @@
+[gd_resource type="TileSet" format=3 uid="uid://dxkpd8ec4m6hq"]
+
+[ext_resource type="Texture2D" uid="uid://c32bfwss5esoi" path="res://assets/graphics/sauce_lloron.png" id="1_rlrdu"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mlgqr"]
+texture = ExtResource("1_rlrdu")
+0:0/0 = 0
+0:1/0 = 0
+
+[resource]
+tile_size = Vector2i(32, 16)
+sources/0 = SubResource("TileSetAtlasSource_mlgqr")
