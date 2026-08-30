@@ -2316,13 +2316,15 @@ position = Vector2(0, 27)
 sprite_frames = SubResource("SpriteFrames_rptwj")
 animation = &"run_w"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=970918775]
+[node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=970918775]
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_rptwj")
 
 [node name="ChargeTimer" type="Timer" parent="." unique_id=386217155]
+one_shot = true
 
 [node name="DashTimer" type="Timer" parent="." unique_id=1994025816]
+one_shot = true
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=2035713845]
 scale = Vector2(0.2, 0.2)

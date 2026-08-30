@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 signal request_tracking(momentum)
 signal spawn_explosion(pos)
+signal spawn_hitbox(pos, orientation)
 
 @export var animation: Node
 @onready var _charge_timer = $ChargeTimer
@@ -14,6 +15,44 @@ var _old_direction = Vector2(0,0)
 var _is_dashing = false
 var _dash_charged = false
 var _dash_direction:Vector2 = Vector2(0,0)
+
+func _physics_process(delta: float) -> void:
+	_old_direction = _direction
+	_direction = Vector2(0,0)
+	
+	if Input.is_action_pressed("ui_right"):
+		_direction += Vector2(1,0)
+	
+	if Input.is_action_pressed("ui_left"):
+		_direction += Vector2(-1,0)
+		
+	if Input.is_action_pressed("ui_up"):
+		_direction += Vector2(0,-1)
+		
+	if Input.is_action_pressed("ui_down"):
+		_direction += Vector2(0,1)
+	_direction = _direction.normalized()
+	if Input.is_action_just_pressed("Dash_attack"):
+		_dash_charged = false
+		_charge_timer.start(Param.CHARGING_TIME)
+		
+	if Input.is_action_just_released("Dash_attack"):
+		_charge_timer.stop()
+		
+		if _dash_charged:
+			_is_dashing = true
+			_dash_charged = false
+			_dash_direction = _direction
+			_dash_timer.start(Param.DASH_DURATION)
+			
+			spawn_explosion.emit(position)
+
+	if _is_dashing:
+		_dash_attack(_dash_direction)
+		
+	else:
+		_normal_movement(delta)
+	move_and_slide()
 
 func _normal_movement(delta):
 	var _instant_acceleration = 0 
@@ -42,7 +81,7 @@ func _normal_movement(delta):
 	
 	var _penalty = 1
 	if Input.is_action_pressed("Dash_attack"):
-		_penalty = 0.4
+		_penalty = (1 - Param.CHARGE_SLOWDOWN)
 	
 	#var _new_direction = (_direction + Param.MOVEMENT_DIRECTION_INERTIA* _old_direction).normalized()
 	_direction = (_direction + Param.MOVEMENT_DIRECTION_INERTIA* _old_direction).normalized()
@@ -59,39 +98,7 @@ func _dash_attack(dash_direction):
 	velocity = _new_direction * Param.DASH_SPEED 
 	
 	
-func _physics_process(delta: float) -> void:
-	_old_direction = _direction
-	_direction = Vector2(0,0)
-	
-	if Input.is_action_pressed("ui_right"):
-		_direction += Vector2(1,0)
-	
-	if Input.is_action_pressed("ui_left"):
-		_direction += Vector2(-1,0)
-		
-	if Input.is_action_pressed("ui_up"):
-		_direction += Vector2(0,-1)
-		
-	if Input.is_action_pressed("ui_down"):
-		_direction += Vector2(0,1)
-	_direction = _direction.normalized()
-	if Input.is_action_just_pressed("Dash_attack"):
-		_dash_charged = false
-		_charge_timer.start(Param.CHARGING_TIME)
-	if Input.is_action_just_released("Dash_attack"):
-		if _dash_charged:
-			_is_dashing = true
-			_dash_direction = _direction
-			_dash_timer.start(Param.DASH_DURATION)
-			
-			spawn_explosion.emit(position)
 
-	if _is_dashing:
-		_dash_attack(_dash_direction)
-		
-	else:
-		_normal_movement(delta)
-	move_and_slide()
 
 # Graficos 
 
@@ -113,17 +120,19 @@ func _process(delta: float) -> void:
 	for i in range(8):
 		# Como las direcciones cardinales estan a angulos de pi/4,
 		# la mas cercana esta a un angulo menor que pi/8 
-		print(180/PI * acos(_direction.dot(Constants.CARDINALS_VECTORS[i])))
+
 		if _direction.dot(Constants.CARDINALS_VECTORS[i]) > cos(PI/8):
 			animation.play(_animation_name + Constants.CARDINALS_NAMES[i])
-			print(_animation_name + Constants.CARDINALS_NAMES[i])
 
 	queue_redraw()
 	
 	
 
 func _draw():
-	draw_circle(Vector2.ZERO, _radius, Color.ORANGE)
+	var _color = Color.WHITE
+	if _dash_charged:
+		_color = Color.MEDIUM_VIOLET_RED
+	draw_circle(Vector2.ZERO, _radius, _color)
 
 
 func _on_charge_timer_timeout() -> void:
@@ -132,3 +141,5 @@ func _on_charge_timer_timeout() -> void:
 
 func _on_dash_timer_timeout() -> void:
 	_is_dashing = false
+	spawn_hitbox.emit(position, velocity.normalized())
+	

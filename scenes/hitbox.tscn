@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://c31uwd4t1kf1v"]
+
+[ext_resource type="Script" uid="uid://emmu8lso7n6g" path="res://scenes/hitbox.gd" id="1_0vdsg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rptwj"]
+
+[node name="Hitbox" type="Area2D" unique_id=1346781641]
+scale = Vector2(5, 5)
+collision_mask = 0
+script = ExtResource("1_0vdsg")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1386690627]
+color = Color(1, 0.10980392, 0.8784314, 1)
+polygon = PackedVector2Array(0, -15, 7, -12, 10, 0, 7, 12, 0, 15, -7, 12, -10, 0, -7, -12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1384608003]
+shape = SubResource("CapsuleShape2D_rptwj")
