@@ -1,16 +1,20 @@
 extends CharacterBody2D
-var _direction: Vector2 = Vector2(0,0)
+
 
 signal request_tracking(momentum)
+signal spawn_explosion(pos)
+
 @export var animation: Node
 @onready var _charge_timer = $ChargeTimer
 @onready var _dash_timer = $DashTimer
 
 var _momentum: float = 0
+var _direction: Vector2 = Vector2(-1,-1).normalized()
+var _old_direction = Vector2(0,0)
 var _is_dashing = false
 var _dash_charged = false
 var _dash_direction:Vector2 = Vector2(0,0)
-var _old_direction = Vector2(0,0)
+
 func _normal_movement(delta):
 	var _instant_acceleration = 0 
 	var _instant_decceleration = 0
@@ -46,6 +50,9 @@ func _normal_movement(delta):
 	
 # Fisica y controles
 func _dash_attack(dash_direction):
+	_momentum = Param.MAX_MOMENTUM
+	request_tracking.emit(_momentum)
+	
 	var _new_direction = dash_direction 
 	if dash_direction.dot(_direction) >= 0:
 		_new_direction = ((dash_direction + _direction*(Param.DASH_DIRECTION_INFLUENCE))).normalized()
@@ -77,6 +84,7 @@ func _physics_process(delta: float) -> void:
 			_dash_direction = _direction
 			_dash_timer.start(Param.DASH_DURATION)
 			
+			spawn_explosion.emit(position)
 
 	if _is_dashing:
 		_dash_attack(_dash_direction)
@@ -91,6 +99,7 @@ var _radius =  Param.STARTING_MOMENTUM * Param.MOMENTUM_RADIUS_CONVERSION
 
 func _process(delta: float) -> void:
 	_radius = clamp(_momentum * Param.MOMENTUM_RADIUS_CONVERSION, Param.STARTING_MOMENTUM * Param.MOMENTUM_RADIUS_CONVERSION, Param.MAX_RADIUS)
+	$PointLight2D.scale = Vector2(1,1)*(_radius-Param.STARTING_MOMENTUM * Param.MOMENTUM_RADIUS_CONVERSION)/(Param.MAX_RADIUS-Param.STARTING_MOMENTUM * Param.MOMENTUM_RADIUS_CONVERSION)
 
 	var _animation_name = "idle_"
 
@@ -104,15 +113,17 @@ func _process(delta: float) -> void:
 	for i in range(8):
 		# Como las direcciones cardinales estan a angulos de pi/4,
 		# la mas cercana esta a un angulo menor que pi/8 
+		print(180/PI * acos(_direction.dot(Constants.CARDINALS_VECTORS[i])))
 		if _direction.dot(Constants.CARDINALS_VECTORS[i]) > cos(PI/8):
 			animation.play(_animation_name + Constants.CARDINALS_NAMES[i])
+			print(_animation_name + Constants.CARDINALS_NAMES[i])
 
 	queue_redraw()
 	
 	
 
 func _draw():
-	draw_circle(Vector2.ZERO, _radius, Color.WHITE)
+	draw_circle(Vector2.ZERO, _radius, Color.ORANGE)
 
 
 func _on_charge_timer_timeout() -> void:

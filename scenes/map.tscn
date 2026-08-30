@@ -2386,6 +2386,7 @@ sources/6 = SubResource("TileSetAtlasSource_p7tei")
 sources/7 = SubResource("TileSetAtlasSource_c70he")
 
 [node name="mapa" type="TileMapLayer" unique_id=2103640855]
+scale = Vector2(5, 5)
 tile_set = SubResource("TileSet_trgaj")
 
 [node name="piedra" type="TileMapLayer" parent="." unique_id=2027863780]

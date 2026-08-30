@@ -2,14 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://duhtoy5osi654" path="res://scenes/hero.tscn" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://be6ptxb7tals6" path="res://scenes/camera.tscn" id="1_sugp2"]
-[ext_resource type="Texture2D" uid="uid://dnehg1bgxfcjy" path="res://assets/graphics/flor_ejemplo.png" id="2_jyhfs"]
+[ext_resource type="Script" uid="uid://exmf4hqroprv" path="res://scenes/world.gd" id="1_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://dnehg1bgxfcjy" path="res://assets/graphics/refe/flor_ejemplo.png" id="2_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://d0cnfjcfxtmgx" path="res://scenes/map.tscn" id="2_tefeu"]
 [ext_resource type="PackedScene" uid="uid://7wabknm65rxf" path="res://scenes/enemy_manager.tscn" id="3_jyhfs"]
-
-[sub_resource type="GDScript" id="GDScript_sugp2"]
-script/source = "extends Node
-
-func _on_monster_fired(bullet: Variant) -> void:
-	add_child(bullet)"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5o8sy"]
 radius = 17.0
@@ -18,11 +14,12 @@ height = 34.0
 [node name="Root" type="Node2D" unique_id=1971893189]
 
 [node name="World" type="Node2D" parent="." unique_id=564217354]
-unique_name_in_owner = true
-script = SubResource("GDScript_sugp2")
+script = ExtResource("1_tbgi4")
+
+[node name="mapa" parent="World" unique_id=2103640855 instance=ExtResource("2_tefeu")]
 
 [node name="Hero" parent="World" unique_id=280822861 instance=ExtResource("1_o5qli")]
-position = Vector2(1, 1)
+position = Vector2(901, 539)
 
 [node name="Camera" parent="World/Hero" unique_id=694021235 instance=ExtResource("1_sugp2")]
 position = Vector2(-6, -2)
@@ -48,3 +45,4 @@ shape = SubResource("CapsuleShape2D_5o8sy")
 position = Vector2(4, -1)
 
 [connection signal="request_tracking" from="World/Hero" to="World/Hero/Camera" method="_on_hero_request_tracking"]
+[connection signal="spawn_explosion" from="World/Hero" to="World" method="_on_spawn_explosion"]
