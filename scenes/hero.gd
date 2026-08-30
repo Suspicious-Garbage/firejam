@@ -10,6 +10,7 @@ var _momentum: float = 0
 var _is_dashing = false
 var _dash_charged = false
 var _dash_direction:Vector2 = Vector2(0,0)
+var _old_direction = Vector2(0,0)
 func _normal_movement(delta):
 	var _instant_acceleration = 0 
 	var _instant_decceleration = 0
@@ -38,19 +39,21 @@ func _normal_movement(delta):
 	var _penalty = 1
 	if Input.is_action_pressed("Dash_attack"):
 		_penalty = 0.4
-	velocity = _momentum * _direction * _penalty
-
 	
+	#var _new_direction = (_direction + Param.MOVEMENT_DIRECTION_INERTIA* _old_direction).normalized()
+	_direction = (_direction + Param.MOVEMENT_DIRECTION_INERTIA* _old_direction).normalized()
+	velocity = _momentum * _direction * _penalty
 	
 # Fisica y controles
-func _dash_attack(dash_direction,direction):
+func _dash_attack(dash_direction):
 	var _new_direction = dash_direction 
-	if dash_direction.dot(direction) >= 0:
-		_new_direction = ((dash_direction + direction*(Param.DIRECTION_ADJUSTMENT))).normalized()
+	if dash_direction.dot(_direction) >= 0:
+		_new_direction = ((dash_direction + _direction*(Param.DASH_DIRECTION_INFLUENCE))).normalized()
 	velocity = _new_direction * Param.DASH_SPEED 
 	
 	
 func _physics_process(delta: float) -> void:
+	_old_direction = _direction
 	_direction = Vector2(0,0)
 	
 	if Input.is_action_pressed("ui_right"):
@@ -67,16 +70,16 @@ func _physics_process(delta: float) -> void:
 	_direction = _direction.normalized()
 	if Input.is_action_just_pressed("Dash_attack"):
 		_dash_charged = false
-		_charge_timer.start(Param.CHARGING_TIMER)
+		_charge_timer.start(Param.CHARGING_TIME)
 	if Input.is_action_just_released("Dash_attack"):
 		if _dash_charged:
 			_is_dashing = true
 			_dash_direction = _direction
-			_dash_timer.start(Param.DASH_TIMER)
+			_dash_timer.start(Param.DASH_DURATION)
 			
 
 	if _is_dashing:
-		_dash_attack(_dash_direction,_direction)
+		_dash_attack(_dash_direction)
 		
 	else:
 		_normal_movement(delta)
@@ -99,10 +102,11 @@ func _process(delta: float) -> void:
 		#animation.play("run")
 
 	for i in range(8):
-		if _direction == Constants.CARDINALS_VECTORS[i]:
+		# Como las direcciones cardinales estan a angulos de pi/4,
+		# la mas cercana esta a un angulo menor que pi/8 
+		if _direction.dot(Constants.CARDINALS_VECTORS[i]) > cos(PI/8):
 			animation.play(_animation_name + Constants.CARDINALS_NAMES[i])
 
-	
 	queue_redraw()
 	
 	
