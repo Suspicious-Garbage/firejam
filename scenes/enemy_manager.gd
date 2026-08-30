@@ -13,7 +13,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	print(get_children())
 	while enemy_queue.size() > Param.ENEMY_CAP:
 		var _despawned_enemy = enemy_queue.pop_front()
 		_despawned_enemy.queue_free()
@@ -30,6 +29,9 @@ func _on_monster_fired(pos, vel):
 		add_child(new_bullet)
 		bullet_queue.push_back(new_bullet)
 
+func _on_enemy_died(enemy):
+	enemy_queue.erase(enemy)
+	enemy.queue_free()
 
 func _on_timer_timeout() -> void:
 	_spawn_enemy(Vector2(50,100))
@@ -39,6 +41,7 @@ func _spawn_enemy(location: Vector2):
 	new_enemy.fired.connect(_on_monster_fired)
 	
 	new_enemy.position = location
+	new_enemy.died.connect(_on_enemy_died)
 	
 	add_child(new_enemy)
 	enemy_queue.push_back(new_enemy)

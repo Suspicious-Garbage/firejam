@@ -24,5 +24,5 @@ func _on_hero_spawn_hitbox(pos: Variant, orientation: Variant) -> void:
 	var new_hitbox = hitbox.instantiate()
 	new_hitbox.position = pos
 	new_hitbox.rotation = acos(orientation[0]) * sign(orientation[1])
-	new_hitbox.set_collision_layer_value(2, true)
+	new_hitbox.set_collision_layer_value(6, true)
 	add_child(new_hitbox)

@@ -97,7 +97,7 @@ func _dash_attack(dash_direction):
 		_new_direction = ((dash_direction + _direction*(Param.DASH_DIRECTION_INFLUENCE))).normalized()
 	velocity = _new_direction * Param.DASH_SPEED 
 	
-	
+	spawn_hitbox.emit(position, velocity.normalized())
 
 
 # Graficos 
@@ -141,5 +141,3 @@ func _on_charge_timer_timeout() -> void:
 
 func _on_dash_timer_timeout() -> void:
 	_is_dashing = false
-	spawn_hitbox.emit(position, velocity.normalized())
-	

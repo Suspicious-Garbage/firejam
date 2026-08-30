@@ -1,8 +1,11 @@
 extends CharacterBody2D
 
 signal fired(bullet)
+signal died(id)
 	
 @onready var _detection_range = $DetectionRange
+
+var is_dead = false
 
 func _process(delta: float) -> void:
 	pass
@@ -23,3 +26,8 @@ func _on_timer_timeout() -> void:
 	var _direction = (_player.position - position).normalized()
 	
 	fired.emit(position, _direction * 200)
+
+
+
+func _on_hurtbox_area_entered(area: Area2D) -> void:
+	died.emit(self)

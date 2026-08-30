@@ -24,6 +24,9 @@ size = Vector2(20, 15)
 [sub_resource type="CircleShape2D" id="CircleShape2D_rptwj"]
 radius = 122.74319
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t46hp"]
+size = Vector2(20, 14.666667)
+
 [node name="Monster" type="CharacterBody2D" unique_id=1455289324]
 scale = Vector2(3, 3)
 collision_layer = 16
@@ -46,4 +49,13 @@ shape = SubResource("CircleShape2D_rptwj")
 [node name="Timer" type="Timer" parent="." unique_id=1325263817]
 autostart = true
 
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1467577412]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1694667954]
+position = Vector2(1.6666666, 0)
+shape = SubResource("RectangleShape2D_t46hp")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

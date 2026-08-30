@@ -6,7 +6,7 @@ func _ready() -> void:
 	var timer = Timer.new()
 	add_child(timer)
 	timer.timeout.connect(queue_free)
-	timer.call_deferred("start", 5)
+	timer.call_deferred("start", Param.HITBOX_LIFE)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
