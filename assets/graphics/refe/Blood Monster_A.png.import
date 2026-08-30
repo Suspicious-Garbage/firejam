@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2pekmbg7xov3"
-path="res://.godot/imported/male_hero_template.png-d320d3f99212ac93e2fd13df65369908.ctex"
+uid="uid://bk3r42brix6ua"
+path="res://.godot/imported/Blood Monster_A.png-02d186569e239d2fd05a2ed7f7477a06.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/male_hero_template.png"
-dest_files=["res://.godot/imported/male_hero_template.png-d320d3f99212ac93e2fd13df65369908.ctex"]
+source_file="res://assets/graphics/refe/Blood Monster_A.png"
+dest_files=["res://.godot/imported/Blood Monster_A.png-02d186569e239d2fd05a2ed7f7477a06.ctex"]
 
 [params]
 

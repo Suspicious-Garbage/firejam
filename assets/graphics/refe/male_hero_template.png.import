@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnehg1bgxfcjy"
-path="res://.godot/imported/flor_ejemplo.png-dae4f1c56d4d881ab51650bc8c5ade05.ctex"
+uid="uid://d2pekmbg7xov3"
+path="res://.godot/imported/male_hero_template.png-886ac7bcc85dcdb491e2b1dbd434b7e3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/flor_ejemplo.png"
-dest_files=["res://.godot/imported/flor_ejemplo.png-dae4f1c56d4d881ab51650bc8c5ade05.ctex"]
+source_file="res://assets/graphics/refe/male_hero_template.png"
+dest_files=["res://.godot/imported/male_hero_template.png-886ac7bcc85dcdb491e2b1dbd434b7e3.ctex"]
 
 [params]
 

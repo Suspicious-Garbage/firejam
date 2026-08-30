@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgl1nabsfvoul"
-path="res://.godot/imported/sea-buckthorn.png-deed6b2f6afbd6d7a10486c9f19fff6b.ctex"
+uid="uid://cgmoio5tn28ug"
+path="res://.godot/imported/maple.png-2b174df6fcf4cb81208c4746f3432da7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/sea-buckthorn.png"
-dest_files=["res://.godot/imported/sea-buckthorn.png-deed6b2f6afbd6d7a10486c9f19fff6b.ctex"]
+source_file="res://assets/graphics/refe/maple.png"
+dest_files=["res://.godot/imported/maple.png-2b174df6fcf4cb81208c4746f3432da7.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxbo1vhpvlfq1"
-path="res://.godot/imported/ladrillos.png-cf3441496231cd4336465f58489b3f20.ctex"
+uid="uid://cgl1nabsfvoul"
+path="res://.godot/imported/sea-buckthorn.png-84276cd55a5fa1e825aaf5a299ed7415.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/ladrillos.png"
-dest_files=["res://.godot/imported/ladrillos.png-cf3441496231cd4336465f58489b3f20.ctex"]
+source_file="res://assets/graphics/refe/sea-buckthorn.png"
+dest_files=["res://.godot/imported/sea-buckthorn.png-84276cd55a5fa1e825aaf5a299ed7415.ctex"]
 
 [params]
 

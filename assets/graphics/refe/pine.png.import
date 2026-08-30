@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bk3r42brix6ua"
-path="res://.godot/imported/Blood Monster_A.png-5c3588534efb01323d0643361152b64a.ctex"
+uid="uid://dvl6k82r5ht22"
+path="res://.godot/imported/pine.png-2087e0748fbecd8f2994fcff3c31a7f9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/Blood Monster_A.png"
-dest_files=["res://.godot/imported/Blood Monster_A.png-5c3588534efb01323d0643361152b64a.ctex"]
+source_file="res://assets/graphics/refe/pine.png"
+dest_files=["res://.godot/imported/pine.png-2087e0748fbecd8f2994fcff3c31a7f9.ctex"]
 
 [params]
 

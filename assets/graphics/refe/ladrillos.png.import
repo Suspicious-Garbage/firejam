@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1r84r76fmtsp"
-path="res://.godot/imported/bw_tiles.png-53cba473981f0ec9e0750aca94d27fec.ctex"
+uid="uid://bxbo1vhpvlfq1"
+path="res://.godot/imported/ladrillos.png-09adb6e06461be9e6acc64c730a72582.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/bw_tiles.png"
-dest_files=["res://.godot/imported/bw_tiles.png-53cba473981f0ec9e0750aca94d27fec.ctex"]
+source_file="res://assets/graphics/refe/ladrillos.png"
+dest_files=["res://.godot/imported/ladrillos.png-09adb6e06461be9e6acc64c730a72582.ctex"]
 
 [params]
 

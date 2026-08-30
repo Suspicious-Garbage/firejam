@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddymw2bj5oxva"
-path="res://.godot/imported/bw.png-c8569273845fccad45997b4339830bb6.ctex"
+uid="uid://4dc8kpgymkrw"
+path="res://.godot/imported/alt piedras.png-933e6b4b009e8ba92cff39125ab84091.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/bw.png"
-dest_files=["res://.godot/imported/bw.png-c8569273845fccad45997b4339830bb6.ctex"]
+source_file="res://assets/graphics/alt piedras.png"
+dest_files=["res://.godot/imported/alt piedras.png-933e6b4b009e8ba92cff39125ab84091.ctex"]
 
 [params]
 
