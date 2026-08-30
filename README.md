@@ -1,14 +1,21 @@
-ruido de movimiento
-ruido de no movimiento
-ruido de dash (escopetoso)
-ruido de melee (golpe de arena)
-ruido de enemigo muriendo/ impacto
-ruido de fuego recargando
-ruido de poco/nada de fueguito
-ruido ambiente (gas saliendo)
-
-
-
+quehaceres
+	programacion
+		enemigos
+		terminar dash
+		visualizacion carga fuego
+		balas
+		implementar sonido
+	diseño
+		cuerpos que se queman/checkpoint
+		enemigos
+		tunear numeros movimiento y dash
+		items/recompensa/aLGO
+	arte
+		mapa
+			texturar piso
+			agregar random piedras faltantes
+			remover tiles placeholder
+			cambiar color path
 
 
 var _animation_name = "idle"
@@ -33,8 +40,3 @@ var CARDINALS_VECTORS = [
 	Vector2(0,-1), Vector2(1,-1).normalized(), Vector2(1,0), Vector2(1,1).normalized(),
 	Vector2(0,1), Vector2(-1,1).normalized(), Vector2(-1,0), Vector2(-1,-1).normalized()
 ]
-mapa falta:
-	texturar piso
-	agregar random piedras faltantes
-	remover tiles placeholder
-	cambiar color path
