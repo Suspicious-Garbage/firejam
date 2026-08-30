@@ -34,6 +34,10 @@ var TRACKING_MOMENTUM: float = 220
 
 
 ## Aura
-
 var MAX_RADIUS: float = 500
 var MOMENTUM_RADIUS_CONVERSION: float = 0.3
+
+
+## Enemigos
+var ENEMY_CAP: int = 4
+var BULLET_CAP: int = 2

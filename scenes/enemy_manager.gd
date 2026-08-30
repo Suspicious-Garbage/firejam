@@ -3,19 +3,24 @@ extends Node2D
 var monster = preload("monster.tscn")
 var bullet = preload("bullet.tscn")
 
+var enemy_queue =  []
+var bullet_queue = []
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var new_monster = monster.instantiate()
-	new_monster.fired.connect(_on_monster_fired)
-	
-	new_monster.position = Vector2(100, 50)
-	add_child(new_monster)
-	
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	print(get_children())
+	while enemy_queue.size() > Param.ENEMY_CAP:
+		var _despawned_enemy = enemy_queue.pop_front()
+		_despawned_enemy.queue_free()
+		
+	while bullet_queue.size() > Param.BULLET_CAP:
+		var _despawned_bullet = bullet_queue.pop_front()
+		_despawned_bullet.queue_free()
 
 func _on_monster_fired(pos, vel):
 		var new_bullet = bullet.instantiate()
@@ -23,3 +28,17 @@ func _on_monster_fired(pos, vel):
 		new_bullet.velocity = vel
 		
 		add_child(new_bullet)
+		bullet_queue.push_back(new_bullet)
+
+
+func _on_timer_timeout() -> void:
+	_spawn_enemy(Vector2(50,100))
+
+func _spawn_enemy(location: Vector2):
+	var new_enemy = monster.instantiate()
+	new_enemy.fired.connect(_on_monster_fired)
+	
+	new_enemy.position = location
+	
+	add_child(new_enemy)
+	enemy_queue.push_back(new_enemy)

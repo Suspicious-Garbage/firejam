@@ -2,5 +2,11 @@
 
 [ext_resource type="Script" uid="uid://d3vb0fstc8wio" path="res://scenes/enemy_manager.gd" id="1_sqyd6"]
 
-[node name="Enemy_manager" type="Node2D" unique_id=2003751319]
+[node name="EnemyManager" type="Node2D" unique_id=2003751319]
 script = ExtResource("1_sqyd6")
+
+[node name="Timer" type="Timer" parent="." unique_id=1033080380]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

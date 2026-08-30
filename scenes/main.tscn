@@ -46,7 +46,7 @@ collision_layer = 4
 position = Vector2(16.5, 8.5)
 shape = SubResource("CapsuleShape2D_5o8sy")
 
-[node name="Enemy_manager" parent="." unique_id=2003751319 instance=ExtResource("3_jyhfs")]
+[node name="EnemyManager" parent="." unique_id=2003751319 instance=ExtResource("3_jyhfs")]
 position = Vector2(4, -1)
 
 [connection signal="request_tracking" from="World/Hero" to="World/Hero/Camera" method="_on_hero_request_tracking"]
