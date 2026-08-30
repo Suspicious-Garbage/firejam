@@ -17,4 +17,4 @@ func INTERPOLATE(x, min_input, max_input, min_output, max_output):
 	var average_output = (max_output-min_output)/2
 	var delta_input = max_input - min_input
 	var delta_output = max_output - min_output
-	return min_output + (tanh(-1 + 2*(x-min_input)/delta_input) +1) * delta_output/2
+	return min_output + (tanh(-10 + 20*(x-min_input)/delta_input) +1) * delta_output/2
