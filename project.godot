@@ -66,6 +66,7 @@ Dash_attack={
 2d_physics/layer_4="damage"
 2d_physics/layer_5="enemies"
 2d_physics/layer_6="player_hitbox"
+2d_physics/layer_7="spawner"
 
 [physics]
 

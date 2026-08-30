@@ -42,8 +42,11 @@ var MOMENTUM_RADIUS_CONVERSION: float = 0.3
 
 
 ## Enemigos
-var ENEMY_CAP: int = 4
-var BULLET_CAP: int = 2
+var ENEMY_CAP: int = 100
+var BULLET_CAP: int = 100
+
+# en pixeles
+var ACTIVATION_RADIUS = 2000
 
 # en segundos
 var HITBOX_LIFE = 0.3

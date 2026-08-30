@@ -40,7 +40,7 @@ func _spawn_enemy(location: Vector2):
 	var new_enemy = monster.instantiate()
 	new_enemy.fired.connect(_on_monster_fired)
 	
-	new_enemy.position = location
+	new_enemy.global_position = location
 	new_enemy.died.connect(_on_enemy_died)
 	
 	add_child(new_enemy)

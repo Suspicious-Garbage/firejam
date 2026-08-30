@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://c5t8sklu5d24j" path="res://assets/animations/idle_2.png" id="10_rpah5"]
 [ext_resource type="Texture2D" uid="uid://bk5p5bwm0cd5d" path="res://assets/animations/roll_2.png" id="10_wynkb"]
 [ext_resource type="Texture2D" uid="uid://cdx083jpdd3rj" path="res://assets/graphics/point_light_texture.webp" id="19_8m75t"]
+[ext_resource type="Script" uid="uid://dtugi1ru0npce" path="res://scenes/activation_zone.gd" id="20_rvoeo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yvbpl"]
 atlas = ExtResource("1_3uyx6")
@@ -2307,6 +2308,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rptwj"]
 size = Vector2(21, 32)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_rptwj"]
+radius = 2000.0
+
 [node name="Hero" type="CharacterBody2D" unique_id=280822861 node_paths=PackedStringArray("animation")]
 script = ExtResource("1_yvbpl")
 animation = NodePath("AnimatedSprite2D")
@@ -2333,5 +2337,14 @@ energy = 5.0
 texture = ExtResource("19_8m75t")
 height = 669.0
 
+[node name="ActivationZone" type="Area2D" parent="." unique_id=1320428174]
+collision_layer = 0
+collision_mask = 64
+script = ExtResource("20_rvoeo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ActivationZone" unique_id=615187989]
+shape = SubResource("CircleShape2D_rptwj")
+
 [connection signal="timeout" from="ChargeTimer" to="." method="_on_charge_timer_timeout"]
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
+[connection signal="area_entered" from="ActivationZone" to="." method="_on_activation_zone_area_entered"]

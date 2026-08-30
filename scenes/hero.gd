@@ -4,10 +4,13 @@ extends CharacterBody2D
 signal request_tracking(momentum)
 signal spawn_explosion(pos)
 signal spawn_hitbox(pos, orientation)
+signal spawn_enemy(pos)
 
 @export var animation: Node
+
 @onready var _charge_timer = $ChargeTimer
 @onready var _dash_timer = $DashTimer
+@onready var _activation_zone = $ActivationZone/CollisionShape2D
 
 var _momentum: float = 0
 var _direction: Vector2 = Vector2(-1,-1).normalized()
@@ -15,6 +18,9 @@ var _old_direction = Vector2(0,0)
 var _is_dashing = false
 var _dash_charged = false
 var _dash_direction:Vector2 = Vector2(0,0)
+
+func _ready() -> void:
+	_activation_zone.shape.radius = Param.ACTIVATION_RADIUS
 
 func _physics_process(delta: float) -> void:
 	_old_direction = _direction
@@ -141,3 +147,7 @@ func _on_charge_timer_timeout() -> void:
 
 func _on_dash_timer_timeout() -> void:
 	_is_dashing = false
+
+
+func _on_activation_zone_area_entered(body: Node2D) -> void:
+	spawn_enemy.emit(body.global_position)

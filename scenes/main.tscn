@@ -45,5 +45,6 @@ shape = SubResource("CapsuleShape2D_5o8sy")
 position = Vector2(4, -1)
 
 [connection signal="request_tracking" from="World/Hero" to="World/Hero/Camera" method="_on_hero_request_tracking"]
+[connection signal="spawn_enemy" from="World/Hero" to="EnemyManager" method="_spawn_enemy"]
 [connection signal="spawn_explosion" from="World/Hero" to="World" method="_on_spawn_explosion"]
 [connection signal="spawn_hitbox" from="World/Hero" to="World" method="_on_hero_spawn_hitbox"]

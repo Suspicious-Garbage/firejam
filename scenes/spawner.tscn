@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://ik2i7ktcyjjo"]
+
+[ext_resource type="Script" uid="uid://bopgolpqu3pqg" path="res://scenes/spawner.gd" id="1_2vbf6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rptwj"]
+radius = 3.0
+
+[node name="Spawner" type="Area2D" unique_id=824873871]
+collision_layer = 64
+collision_mask = 0
+script = ExtResource("1_2vbf6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1601947072]
+shape = SubResource("CircleShape2D_rptwj")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=556440902]
+texture_scale = Vector2(100, 100)
+polygon = PackedVector2Array(-3, -4, 7, -4, 6, 8, -7, 4)
