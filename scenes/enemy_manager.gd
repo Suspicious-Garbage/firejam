@@ -36,12 +36,19 @@ func _on_enemy_died(enemy):
 #func _on_timer_timeout() -> void:
 #	_spawn_enemy(Vector2(50,100))
 
-func _spawn_enemy(location: Vector2):
-	print(location)
-	var new_enemy = monster.instantiate()
+func _spawn_enemy(enemy):
+	#print(location)
+	#var new_enemy = monster.instantiate()
+	var new_enemy
+	
+	match enemy.type:
+		"torreta":
+			new_enemy = monster.instantiate()
+		
+	
 	new_enemy.fired.connect(_on_monster_fired)
 	
-	new_enemy.global_position = location
+	new_enemy.global_position = enemy.global_position
 	new_enemy.died.connect(_on_enemy_died)
 	
 	add_child.call_deferred(new_enemy)

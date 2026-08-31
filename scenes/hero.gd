@@ -150,5 +150,5 @@ func _on_dash_timer_timeout() -> void:
 
 
 func _on_activation_zone_area_entered(body: Node2D) -> void:
-	spawn_enemy.emit(body.global_position)
+	spawn_enemy.emit(body)
 	body.call_deferred("queue_free")

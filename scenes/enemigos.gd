@@ -8,6 +8,10 @@ func _ready() -> void:
 		
 		var new_spawner = spawner.instantiate()
 		new_spawner.position = map_to_local(cell)
+		
+		
+		
+		new_spawner.type = "torreta"
 		print(cell)
 		add_child(new_spawner)
 

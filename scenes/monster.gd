@@ -25,7 +25,6 @@ func _state_transition() -> void:
 	
 	if _targets.size() != 0:
 		_player = _targets[0]
-		print(_player)
 		_in_range = true
 	
 		match _state:
