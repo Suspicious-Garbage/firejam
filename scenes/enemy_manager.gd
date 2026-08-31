@@ -1,8 +1,6 @@
 extends Node2D
 
 var monster = preload("monster.tscn")
-var monster2 = preload("monster2.tscn")
-var monster3 = preload("monster3.tscn")
 var bullet = preload("bullet.tscn")
 
 var enemy_queue =  []
@@ -11,7 +9,6 @@ var bullet_queue = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -22,6 +19,7 @@ func _process(delta: float) -> void:
 	while bullet_queue.size() > Param.BULLET_CAP:
 		var _despawned_bullet = bullet_queue.pop_front()
 		_despawned_bullet.queue_free()
+
 
 func _on_monster_fired(pos, vel):
 		var new_bullet = bullet.instantiate()
@@ -41,22 +39,11 @@ func _on_bullet_collided(bullet):
 	bullet_queue.erase(bullet)
 	bullet.queue_free()
 
-#func _on_timer_timeout() -> void:
-#	_spawn_enemy(Vector2(50,100))
-
 func _spawn_enemy(enemy):
-	#print(location)
-	#var new_enemy = monster.instantiate()
 	var new_enemy
 	
-	#print((enemy.type))
-	match enemy.type:
-		"planta":
-			new_enemy = monster.instantiate()
-		"flor":
-			new_enemy = monster2.instantiate()
-		"hongo":
-			new_enemy = monster3.instantiate()
+	new_enemy = monster.instantiate()
+	new_enemy._type = enemy.type
 		
 	
 	new_enemy.fired.connect(_on_monster_fired)

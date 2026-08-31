@@ -19,8 +19,10 @@ var _is_dashing = false
 var _dash_charged = false
 var _dash_direction:Vector2 = Vector2(0,0)
 
+
 func _ready() -> void:
 	_activation_zone.shape.radius = Param.ACTIVATION_RADIUS
+
 
 func _physics_process(delta: float) -> void:
 	_old_direction = _direction
@@ -59,6 +61,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		_normal_movement(delta)
 	move_and_slide()
+
 
 func _normal_movement(delta):
 	var _instant_acceleration = 0 
@@ -128,12 +131,11 @@ func _process(delta: float) -> void:
 	var anim_direction = _direction
 	if _is_dashing:
 		anim_direction = _dash_direction
-		#animation.play("run")
+		#animation.play("run")	#draw_circle(Vector2.ZERO, _radius, _color)
 
 	for i in range(8):
 		# Como las direcciones cardinales estan a angulos de pi/4,
 		# la mas cercana esta a un angulo menor que pi/8 
-
 		if anim_direction.dot(Constants.CARDINALS_VECTORS[i]) > cos(PI/8):
 			animation.play(_animation_name + Constants.CARDINALS_NAMES[i])
 

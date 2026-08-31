@@ -13,11 +13,11 @@ func _ready() -> void:
 		
 		match get_cell_atlas_coords(cell):
 			Vector2i(0,0):
-				new_spawner.type = "planta"
+				new_spawner.type = "plant"
 			Vector2i(2,0):
-				new_spawner.type = "flor"
+				new_spawner.type = "flower"
 			Vector2i(4,0):
-				new_spawner.type = "hongo"
+				new_spawner.type = "fungus"
 		
 		add_child(new_spawner)
 
