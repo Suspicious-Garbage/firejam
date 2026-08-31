@@ -1,6 +1,8 @@
 extends Node2D
 
 var monster = preload("monster.tscn")
+var monster2 = preload("monster2.tscn")
+var monster3 = preload("monster3.tscn")
 var bullet = preload("bullet.tscn")
 
 var enemy_queue =  []
@@ -41,9 +43,14 @@ func _spawn_enemy(enemy):
 	#var new_enemy = monster.instantiate()
 	var new_enemy
 	
+	#print((enemy.type))
 	match enemy.type:
-		"torreta":
+		"planta":
 			new_enemy = monster.instantiate()
+		"flor":
+			new_enemy = monster2.instantiate()
+		"hongo":
+			new_enemy = monster3.instantiate()
 		
 	
 	new_enemy.fired.connect(_on_monster_fired)

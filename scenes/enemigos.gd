@@ -9,10 +9,16 @@ func _ready() -> void:
 		var new_spawner = spawner.instantiate()
 		new_spawner.position = map_to_local(cell)
 		
+		#print(get_cell_atlas_coords(cell))
 		
+		match get_cell_atlas_coords(cell):
+			Vector2i(0,0):
+				new_spawner.type = "planta"
+			Vector2i(2,0):
+				new_spawner.type = "flor"
+			Vector2i(4,0):
+				new_spawner.type = "hongo"
 		
-		new_spawner.type = "torreta"
-		print(cell)
 		add_child(new_spawner)
 
 

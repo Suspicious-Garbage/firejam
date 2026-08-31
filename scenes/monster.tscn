@@ -245,5 +245,3 @@ autostart = true
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer"]
-[connection signal="timeout" from="StateTimer" to="." method="_state_transition"]

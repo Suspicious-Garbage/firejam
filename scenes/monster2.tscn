@@ -19,6 +19,7 @@ height = 33.28
 [node name="Monster" type="CharacterBody2D" unique_id=1455289324]
 scale = Vector2(3, 3)
 collision_layer = 16
+collision_mask = 2
 script = ExtResource("1_rhnqm")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=845784544]
@@ -30,8 +31,7 @@ position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_rptwj")
 
 [node name="DetectionRange" type="Area2D" parent="." unique_id=961359797]
-collision_layer = 8
-collision_mask = 3
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange" unique_id=2080743093]
 shape = SubResource("CircleShape2D_rptwj")
@@ -52,5 +52,8 @@ shape = SubResource("CapsuleShape2D_rlrdu")
 [node name="Timer" type="Timer" parent="." unique_id=1325263817]
 autostart = true
 
+[node name="ShootTimer" type="Timer" parent="." unique_id=33649639]
+
+[node name="StateTimer" type="Timer" parent="." unique_id=374365775]
+
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ddymw2bj5oxva" path="res://assets/graphics/refe/bw.png" id="4_jh32y"]
 [ext_resource type="Texture2D" uid="uid://dnehg1bgxfcjy" path="res://assets/graphics/refe/flor_ejemplo.png" id="5_be0no"]
 [ext_resource type="Texture2D" uid="uid://dvl6k82r5ht22" path="res://assets/graphics/refe/pine.png" id="6_blm8a"]
+[ext_resource type="Texture2D" uid="uid://w2e8h8htm7lp" path="res://assets/tilesets/enemigos_sueltos.png" id="8_blm8a"]
 [ext_resource type="Texture2D" uid="uid://bk3r42brix6ua" path="res://assets/graphics/refe/Blood Monster_A.png" id="8_jh32y"]
 [ext_resource type="Script" uid="uid://3h1mwoh72h4b" path="res://scenes/enemigos.gd" id="9_be0no"]
 
@@ -2285,6 +2286,15 @@ sources/5 = SubResource("TileSetAtlasSource_c00ee")
 sources/6 = SubResource("TileSetAtlasSource_p7tei")
 sources/7 = SubResource("TileSetAtlasSource_c70he")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mlgqr"]
+texture = ExtResource("8_blm8a")
+0:0/size_in_atlas = Vector2i(2, 2)
+0:0/0 = 0
+2:0/size_in_atlas = Vector2i(2, 2)
+2:0/0 = 0
+4:0/size_in_atlas = Vector2i(2, 2)
+4:0/0 = 0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_be0no"]
 texture = ExtResource("8_jh32y")
 9:15/0 = 0
@@ -2294,6 +2304,7 @@ texture = ExtResource("8_jh32y")
 physics_layer_0/collision_layer = 64
 physics_layer_0/collision_mask = 0
 sources/1 = SubResource("TileSetAtlasSource_be0no")
+sources/0 = SubResource("TileSetAtlasSource_mlgqr")
 
 [node name="mapa" type="TileMapLayer" unique_id=2103640855]
 scale = Vector2(5, 5)
@@ -2323,7 +2334,8 @@ tile_set = SubResource("TileSet_dra8c")
 occlusion_enabled = false
 
 [node name="enemigos" type="TileMapLayer" parent="." unique_id=1626873517]
-tile_map_data = PackedByteArray("AAD4/wUAAQAJAA8AAAD4/wQAAQAJAA8AAAD4/wMAAQAJAA8AAAD4/wIAAQAJAA8AAAD4/wEAAQAJAA8AAAD4/wAAAQAJAA8AAAANANH/AQAJAA8AAAAIANP/AQAJAA8AAAAWANP/AQAJAA8AAAA=")
+scale = Vector2(0.8, 0.8)
+tile_map_data = PackedByteArray("AAAJANb/AAAAAAAAAAD6/wQAAAAAAAAAAAD6/wMAAAAAAAAAAAD6/wIAAAAAAAAAAAD6/wEAAAAAAAAAAAD6/wAAAAAAAAAAAAABAPr/AAAEAAAAAAAGAP3/AAACAAAAAAA=")
 tile_set = SubResource("TileSet_rptwj")
 physics_quadrant_size = 1
 script = ExtResource("9_be0no")

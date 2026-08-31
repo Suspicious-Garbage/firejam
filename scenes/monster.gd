@@ -4,6 +4,10 @@ signal fired(bullet)
 signal died(id)
 	
 @onready var _detection_range = $DetectionRange
+@onready var _state_timer = $StateTimer
+@onready var _shoot_timer = $ShootTimer
+
+
 
 var _state = 0
 var _direction: Vector2
@@ -16,6 +20,8 @@ func _process(delta: float) -> void:
 	pass
 	
 func _ready():
+	_state_timer.timeout.connect(_state_transition)
+	_shoot_timer.timeout.connect(_on_shoot_timer)
 	_state_transition()
 
 func _state_transition() -> void:
@@ -41,7 +47,7 @@ func _state_transition() -> void:
 				_state = 1
 			1:
 				_state = 0	
-	$StateTimer.start(1)
+	_state_timer.start(1)
 	
 #func _physics_process(delta: float) -> void:
 
@@ -50,20 +56,8 @@ func _on_shoot_timer():
 		var params = _shots.pop_front()
 		fired.emit(params[1], params[0] * 200)
 	else:
-		$ShootTimer.stop()
+		_shoot_timer.stop()
 		state_transition()
-
-func _on_timer_2_timeout() -> void:
-	match _state:
-		1:
-			_counter += 1
-			
-			if _counter >= 6:
-				_state = 0
-			else:
-				$Timer2.start(3)
-				fired.emit(position, _direction * 200)
-
 
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
