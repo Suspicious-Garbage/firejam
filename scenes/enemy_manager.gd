@@ -43,5 +43,5 @@ func _spawn_enemy(location: Vector2):
 	new_enemy.global_position = location
 	new_enemy.died.connect(_on_enemy_died)
 	
-	add_child(new_enemy)
+	add_child.call_deferred(new_enemy)
 	enemy_queue.push_back(new_enemy)
