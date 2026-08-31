@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://kwppgx7ps4uy"]
 
-[ext_resource type="Script" uid="uid://bl2evghwaexj7" path="res://scenes/monster.gd" id="1_ch6pf"]
+[ext_resource type="Script" uid="uid://1ac57x7cnsdv" path="res://scenes/monster_3.gd" id="1_ch6pf"]
 [ext_resource type="Texture2D" uid="uid://ceiercelg1qs3" path="res://assets/graphics/SporePlant-spritesheet.png" id="2_ch6pf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kj6qq"]

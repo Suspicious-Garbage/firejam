@@ -37,16 +37,15 @@ func _state_transition() -> void:
 			0: 
 				_direction = (_targets[0].position - position).normalized()
 				$ShootTimer.start(0.1)
-				_shots = [
-					[[_direction, position]],
-					[[_direction, position]],
-					[[_direction, position]],
-					[[_direction, position]],
-					[[_direction, position]]
-				]
-				_state = 1
+				for i in range(4):
+					_shots.push_back(
+						[
+							[_direction.rotated(PI/16 * i), position],
+							[_direction.rotated(-1 * PI/16 * i), position]
+						]
+					)
 			1:
-				_state = 0	
+				_state = 0
 	_state_timer.start(1)
 	
 #func _physics_process(delta: float) -> void:

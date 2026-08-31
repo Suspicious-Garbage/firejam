@@ -37,16 +37,19 @@ func _state_transition() -> void:
 			0: 
 				_direction = (_targets[0].position - position).normalized()
 				$ShootTimer.start(0.1)
-				_shots = [
-					[[_direction, position]],
-					[[_direction, position]],
-					[[_direction, position]],
-					[[_direction, position]],
-					[[_direction, position]]
-				]
+				var volley = []
+				for dir in Constants.CARDINALS_VECTORS:
+					volley.push_back([dir, position])
+				_shots = [volley]
 				_state = 1
 			1:
-				_state = 0	
+				_direction = (_targets[0].position - position).normalized()
+				$ShootTimer.start(0.1)
+				var volley = []
+				for dir in Constants.CARDINALS_VECTORS:
+					volley.push_back([dir.rotated(PI/8), position])
+				_shots = [volley]
+				_state = 1
 	_state_timer.start(1)
 	
 #func _physics_process(delta: float) -> void:

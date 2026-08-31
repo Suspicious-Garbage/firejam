@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://djvxqeexjccth"]
 
-[ext_resource type="Script" uid="uid://bl2evghwaexj7" path="res://scenes/monster.gd" id="1_rhnqm"]
+[ext_resource type="Script" uid="uid://dtxlxltj46crd" path="res://scenes/monster_2.gd" id="1_rhnqm"]
 [ext_resource type="Texture2D" uid="uid://c32bfwss5esoi" path="res://assets/graphics/sauce_lloron.png" id="2_rromv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rptwj"]
