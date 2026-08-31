@@ -112,7 +112,10 @@ var _radius =  Param.STARTING_MOMENTUM * Param.MOMENTUM_RADIUS_CONVERSION
 
 func _process(delta: float) -> void:
 	_radius = clamp(_momentum * Param.MOMENTUM_RADIUS_CONVERSION, Param.STARTING_MOMENTUM * Param.MOMENTUM_RADIUS_CONVERSION, Param.MAX_RADIUS)
-	$PointLight2D.scale = Vector2(1,1)*(_radius-Param.STARTING_MOMENTUM * Param.MOMENTUM_RADIUS_CONVERSION)/(Param.MAX_RADIUS-Param.STARTING_MOMENTUM * Param.MOMENTUM_RADIUS_CONVERSION)
+	$PointLight2D.scale = Vector2(1,1)*(0.0001+((_radius-Param.STARTING_MOMENTUM * Param.MOMENTUM_RADIUS_CONVERSION)/(Param.MAX_RADIUS-Param.STARTING_MOMENTUM * Param.MOMENTUM_RADIUS_CONVERSION)))
+	if _momentum < Param.STARTING_MOMENTUM:
+		$PointLight2D.scale = Vector2(1,1)*0.05
+		
 
 	var _animation_name = "idle_"
 

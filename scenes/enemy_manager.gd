@@ -28,12 +28,18 @@ func _on_monster_fired(pos, vel):
 		new_bullet.position = pos
 		new_bullet.velocity = vel
 		
+		new_bullet.collided.connect(_on_bullet_collided)
+		
 		add_child(new_bullet)
 		bullet_queue.push_back(new_bullet)
 
 func _on_enemy_died(enemy):
 	enemy_queue.erase(enemy)
 	enemy.queue_free()
+	
+func _on_bullet_collided(bullet):
+	bullet_queue.erase(bullet)
+	bullet.queue_free()
 
 #func _on_timer_timeout() -> void:
 #	_spawn_enemy(Vector2(50,100))

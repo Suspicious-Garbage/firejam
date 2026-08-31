@@ -15,7 +15,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t46hp"]
-size = Vector2(128, 130)
+size = Vector2(8, 8)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rptwj"]
 
@@ -33,6 +33,8 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 
 [node name="Bullet" type="CharacterBody2D" unique_id=1066256117]
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("1_y25gk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=408645732]
@@ -41,14 +43,16 @@ sprite_frames = SubResource("SpriteFrames_rptwj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1513033793]
 shape = SubResource("RectangleShape2D_t46hp")
-disabled = true
 
 [node name="Area2D" type="Area2D" parent="." unique_id=743521121]
 collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=88560930]
+visible = false
 shape = SubResource("CircleShape2D_rptwj")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1085654193]
 texture = SubResource("GradientTexture2D_t46hp")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
