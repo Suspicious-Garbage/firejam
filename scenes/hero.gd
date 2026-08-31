@@ -121,13 +121,17 @@ func _process(delta: float) -> void:
 	else:
 		_animation_name = "run_"
 		
+		
+	var anim_direction = _direction
+	if _is_dashing:
+		anim_direction = _dash_direction
 		#animation.play("run")
 
 	for i in range(8):
 		# Como las direcciones cardinales estan a angulos de pi/4,
 		# la mas cercana esta a un angulo menor que pi/8 
 
-		if _direction.dot(Constants.CARDINALS_VECTORS[i]) > cos(PI/8):
+		if anim_direction.dot(Constants.CARDINALS_VECTORS[i]) > cos(PI/8):
 			animation.play(_animation_name + Constants.CARDINALS_NAMES[i])
 
 	queue_redraw()
@@ -138,7 +142,7 @@ func _draw():
 	var _color = Color.WHITE
 	if _dash_charged:
 		_color = Color.MEDIUM_VIOLET_RED
-	draw_circle(Vector2.ZERO, _radius, _color)
+	#draw_circle(Vector2.ZERO, _radius, _color)
 
 
 func _on_charge_timer_timeout() -> void:
