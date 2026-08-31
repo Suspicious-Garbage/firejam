@@ -2312,6 +2312,7 @@ size = Vector2(21, 32)
 radius = 2000.0
 
 [node name="Hero" type="CharacterBody2D" unique_id=280822861 node_paths=PackedStringArray("animation")]
+collision_mask = 2
 script = ExtResource("1_yvbpl")
 animation = NodePath("AnimatedSprite2D")
 

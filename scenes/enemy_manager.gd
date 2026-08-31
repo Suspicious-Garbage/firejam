@@ -33,10 +33,11 @@ func _on_enemy_died(enemy):
 	enemy_queue.erase(enemy)
 	enemy.queue_free()
 
-func _on_timer_timeout() -> void:
-	_spawn_enemy(Vector2(50,100))
+#func _on_timer_timeout() -> void:
+#	_spawn_enemy(Vector2(50,100))
 
 func _spawn_enemy(location: Vector2):
+	print(location)
 	var new_enemy = monster.instantiate()
 	new_enemy.fired.connect(_on_monster_fired)
 	
